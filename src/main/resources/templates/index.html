@@ -52,8 +52,11 @@
                 <span th:if="${#fields.hasErrors('dishTitle')}" th:errors="*{dishTitle}">Please enter a dish title</span><br>
 
                 <input type="submit" value="Submit"/>
-                <input type="reset" value="Reset">
+                <input type="reset" value="Reset"><br>
 
+
+                <div th:if="${confirmmsg}==true" th:text="'Success, you have been added'" class="well alert alert-danger col-xs-6">Please enter a valid date</div>
+                <!--<div th:if="${#fields.hasErrors('firstName')}" th:text="#{firstName}"  role="alert">NameError</div>-->
 
                 <br/><br/>
                 <!--<div th:if="${#fields.hasErrors('name')}" th:text="#{static.name}" class="well alert alert-danger col-xs-6" role="alert">NameError</div>-->

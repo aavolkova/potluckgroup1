@@ -53,7 +53,8 @@
                 <tr>
                     <td><p th:text="${guest.firstName}"></p></td>
                     <td><p th:text="${guest.lastName}"></p></td>
-                    <td><p th:text="${guest.dishTitle}"></p></td>
+                    <!--<td><p th:text="${#strings.capitalize(guest.dishTitle)}"></p></td>-->
+                    <td><p th:text="${#strings.toUpperCase(guest.dishTitle)}"></p></td>
                 </tr>
             </th:block>
         </table>

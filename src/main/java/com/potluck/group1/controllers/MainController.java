@@ -31,13 +31,13 @@ public class MainController {
 
 
     @PostMapping ("/index")
-    public String indexPagePost(@Valid @ModelAttribute("potluckGuest") PotluckGuest potluckGuest, BindingResult bindingResult) {
+    public String indexPagePost(@Valid @ModelAttribute("potluckGuest") PotluckGuest potluckGuest, BindingResult bindingResult, Model model) {
 
 
         if (bindingResult.hasErrors()) {
             return "index";
         }
-
+        model.addAttribute("confirmmsg", true);
         potluckRepo.save(potluckGuest);
 
         return "index";
@@ -48,12 +48,12 @@ public class MainController {
 
         Iterable<PotluckGuest> potluckGuests = potluckRepo.findAll();
 
-        for(PotluckGuest plg: potluckGuests){
-            String dishTitle = plg.getDishTitle();
-            String capDishTitle = dishTitle.toUpperCase();
-
-
-        }
+//        for(PotluckGuest plg: potluckGuests){
+//            String dishTitle = plg.getDishTitle();
+//            String capDishTitle = dishTitle.toUpperCase();
+//
+//
+//        }
 
 
 
