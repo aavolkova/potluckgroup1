@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
+import java.util.Iterator;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -46,8 +48,32 @@ public class MainController {
 
         Iterable<PotluckGuest> potluckGuests = potluckRepo.findAll();
 
+        for(PotluckGuest plg: potluckGuests){
+            String dishTitle = plg.getDishTitle();
+            String capDishTitle = dishTitle.toUpperCase();
+
+
+        }
+
+
+
         model.addAttribute("potluckguests", potluckGuests);
+
+
+        List<PotluckGuest> someGuests = potluckRepo.findByDishTitleContaining("chick");
+
+        System.out.println("List contains" + someGuests.size());
+
+        for (PotluckGuest plg: someGuests) {
+            System.out.println("Dish Found: " + plg.getDishTitle());
+            System.out.println("Dish Found: " + plg.getDishTitle());
+        }
+
         return "potluckguestlist";
+
+
+
+
 
     }
 

@@ -40,10 +40,28 @@
         <h1>Welcome to our Potluck Guestlist</h1>
         <br>
         <a href="/index" class="btn btn-dark btn-lg">Go Back</a>
+        <table border="1" cellpadding="5">
+            <tr>
+                <td><b><p th:text="#{firstName}">First name</p></b></td>
+                <td><b><p th:text="#{lastName}">Last name</p></b></td>
+                <td><b><p th:text="#{dishTitle}">Dish title</p></b></td>
+
+            </tr>
+
+            <!--iterate through all the resumes-->
+            <th:block th:each="guest:${potluckguests}">
+                <tr>
+                    <td><p th:text="${guest.firstName}"></p></td>
+                    <td><p th:text="${guest.lastName}"></p></td>
+                    <td><p th:text="${guest.dishTitle}"></p></td>
+                </tr>
+            </th:block>
+        </table>
 
     </div>
 
 </header>
+
 
 
 <!-- jQuery -->
