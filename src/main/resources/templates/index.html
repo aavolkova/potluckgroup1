@@ -39,7 +39,7 @@
         <div class="text-vertical-center">
             <h1>Welcome to our Potluck</h1>
             <br>
-            <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+            <a href="/potluckguestlist" class="btn btn-dark btn-lg">Show All Guests </a>
             <form action="#" th:action="@{/index}" th:object="${potluckGuest}" method="post">
 
                 First Name: <input type="text" th:field="*{firstName}"/>

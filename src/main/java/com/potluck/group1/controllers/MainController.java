@@ -41,4 +41,14 @@ public class MainController {
         return "index";
     }
 
+    @GetMapping("/potluckguestlist")
+    public String showPotluckGuests (Model model) {
+
+        Iterable<PotluckGuest> potluckGuests = potluckRepo.findAll();
+
+        model.addAttribute("potluckguests", potluckGuests);
+        return "potluckguestlist";
+
+    }
+
 }
