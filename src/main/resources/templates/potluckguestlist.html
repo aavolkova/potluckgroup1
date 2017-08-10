@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+    <title>Welcome to Potluck Guestlist</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,8 +24,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -34,39 +34,26 @@
 
 
 
-    <!-- Header -->
-    <header id="top" class="header">
-        <div class="text-vertical-center">
-            <h1>Welcome to our Potluck</h1>
-            <br>
-            <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
-            <form action="#" th:action="@{/index}" th:object="${potluckGuest}" method="post">
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>Welcome to our Potluck Guestlist</h1>
+        <br>
+        <a href="/index" class="btn btn-dark btn-lg">Go Back</a>
 
-                First Name: <input type="text" th:field="*{firstName}"/>
-                Last Name: <input type="text" th:field="*{lastName}"/>
-                Dish Title: <input type="text" th:field="*{dishTitle}"/><br/><br/>
-                <input type="submit" value="Submit"/>
-                <input type="reset" value="Reset">
+    </div>
+
+</header>
 
 
-                <br/><br/>
-                <!--<div th:if="${#fields.hasErrors('name')}" th:text="#{static.name}" class="well alert alert-danger col-xs-6" role="alert">NameError</div>-->
-                <!--<div th:if="${#fields.hasErrors('numPicked')}" th:text="#{static.numPicked}" class="well alert alert-danger col-xs-6" role="alert">NumPickedError</div>-->
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-            </form>
-        </div>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    </header>
-
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script>
+<!-- Custom Theme JavaScript -->
+<script>
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
@@ -127,17 +114,17 @@
         that.find('iframe').css("pointer-events", "none");
     }
     var onMapClickHandler = function(event) {
-            var that = $(this);
-            // Disable the click handler until the user leaves the map area
-            that.off('click', onMapClickHandler);
-            // Enable scrolling zoom
-            that.find('iframe').css("pointer-events", "auto");
-            // Handle the mouse leave event
-            that.on('mouseleave', onMapMouseleaveHandler);
-        }
-        // Enable map zooming with mouse scroll when the user clicks the map
+        var that = $(this);
+        // Disable the click handler until the user leaves the map area
+        that.off('click', onMapClickHandler);
+        // Enable scrolling zoom
+        that.find('iframe').css("pointer-events", "auto");
+        // Handle the mouse leave event
+        that.on('mouseleave', onMapMouseleaveHandler);
+    }
+    // Enable map zooming with mouse scroll when the user clicks the map
     $('.map').on('click', onMapClickHandler);
-    </script>
+</script>
 
 </body>
 
