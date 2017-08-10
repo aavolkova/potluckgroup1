@@ -1,6 +1,7 @@
 package com.potluck.group1.controllers;
 
 import com.potluck.group1.models.PotluckGuest;
+import com.potluck.group1.models.SearchBox;
 import com.potluck.group1.repository.PotluckRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -76,5 +77,15 @@ public class MainController {
 
 
     }
+
+        @PostMapping("/searchList")
+        public String showSearchList (@ModelAttribute("searchObject") SearchBox searchBox, BindingResult bindingResult, Model model){
+
+        searchBox.getSearchEntry();
+
+        System.out.println("The search you entered found" + searchBox.getSearchEntry());
+
+        return "searchList";
+        }
 
 }
