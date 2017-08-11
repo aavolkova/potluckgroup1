@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Stylish Portfolio - Start Bootstrap Theme</title>
+    <title>Search Results</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,8 +24,8 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
@@ -34,59 +34,45 @@
 
 
 
-    <!-- Header -->
-    <header id="top" class="header">
-        <div class="text-vertical-center">
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>Here are your search results</h1>
+        <br>
+        <a href="/index" class="btn btn-dark btn-lg">Go Back</a>
+        <table>
+            <tr>
+                <!-- Table headers -->
+                <td><b><p th:text="#{firstName}">First name</p></b></td>
+                <td><b><p th:text="#{lastName}">Last name</p></b></td>
+                <td><b><p th:text="#{dishTitle}">Dish title</p></b></td>
+            </tr>
+
+            <!--iterate through all the search results -->
+            <th:block th:each="guest:${searchBoxResultList}">
+                <tr>
+                    <td><p th:text="${guest.firstName}"></p></td>
+                    <td><p th:text="${guest.lastName}"></p></td>
+                    <!--<td><p th:text="${#strings.capitalize(guest.dishTitle)}"></p></td>-->
+                    <td><p th:text="${#strings.toUpperCase(guest.dishTitle)}"></p></td>
+                </tr>
+            </th:block>
+        </table>
+
+    </div>
+
+</header>
 
 
-            <!--<form action="#" th:action="@{/searchList}" th:object="${searchObject}" method="post" class="navbar-form navbar-center">-->
-                <!--<div class="form-group">-->
-                    <!--<input type="text" th:field="*{searchEntry}" class="form-control" placeholder="Search by Dish"/>-->
-                <!--</div>-->
-                <!--<button type="submit" class="btn btn-default">Search</button>-->
-            <!--</form><br>-->
 
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-            <h1>Welcome to our Potluck</h1>
-            <br><br>
-            <a href="/potluckguestlist" class="btn btn-dark btn-lg">Show All Guests </a><br>
-            <form action="#" th:action="@{/index}" th:object="${potluckGuest}" method="post">
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-                First Name: <input type="text" th:field="*{firstName}"/>
-                <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Please enter a first name</span><br>
-
-                Last Name: <input type="text" th:field="*{lastName}"/><br>
-
-
-                Dish Title: <input type="text" th:field="*{dishTitle}"/>
-                <span th:if="${#fields.hasErrors('dishTitle')}" th:errors="*{dishTitle}">Please enter a dish title</span><br>
-
-                <br>
-                <input type="submit" value="Submit"/>
-                <input type="reset" value="Reset"/><br>
-
-
-                <div th:if="${confirmmsg}==true" th:text="'Success, you have been added'" class=" well alert alert-danger col-xs-4 col-xs-offset-4">Please enter a valid date</div>
-                <!--<div th:if="${#fields.hasErrors('firstName')}" th:text="#{firstName}"  role="alert">NameError</div>-->
-
-                <br/><br/>
-                <!--<div th:if="${#fields.hasErrors('name')}" th:text="#{static.name}" class="well alert alert-danger col-xs-6" role="alert">NameError</div>-->
-                <!--<div th:if="${#fields.hasErrors('numPicked')}" th:text="#{static.numPicked}" class="well alert alert-danger col-xs-6" role="alert">NumPickedError</div>-->
-
-            </form>
-        </div>
-
-    </header>
-
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script>
+<!-- Custom Theme JavaScript -->
+<script>
     // Closes the sidebar menu
     $("#menu-close").click(function(e) {
         e.preventDefault();
@@ -147,17 +133,17 @@
         that.find('iframe').css("pointer-events", "none");
     }
     var onMapClickHandler = function(event) {
-            var that = $(this);
-            // Disable the click handler until the user leaves the map area
-            that.off('click', onMapClickHandler);
-            // Enable scrolling zoom
-            that.find('iframe').css("pointer-events", "auto");
-            // Handle the mouse leave event
-            that.on('mouseleave', onMapMouseleaveHandler);
-        }
-        // Enable map zooming with mouse scroll when the user clicks the map
+        var that = $(this);
+        // Disable the click handler until the user leaves the map area
+        that.off('click', onMapClickHandler);
+        // Enable scrolling zoom
+        that.find('iframe').css("pointer-events", "auto");
+        // Handle the mouse leave event
+        that.on('mouseleave', onMapMouseleaveHandler);
+    }
+    // Enable map zooming with mouse scroll when the user clicks the map
     $('.map').on('click', onMapClickHandler);
-    </script>
+</script>
 
 </body>
 
