@@ -28,8 +28,6 @@ public class MainController {
     public String indexPageGet(Model model) {
         model.addAttribute("potluckGuest", new PotluckGuest());
 
-//        model.addAttribute("searchObject", new SearchBox());
-
         return "index";
     }
 
@@ -39,13 +37,13 @@ public class MainController {
 
 
         if (bindingResult.hasErrors()) {
-            model.addAttribute("confirmmsg", false);
+//            model.addAttribute("confirmmsg", false);
             return "index";
         }
-        model.addAttribute("confirmmsg", true);
+//        model.addAttribute("confirmmsg", true);
         potluckRepo.save(potluckGuest);
 
-        return "index";
+        return "guestaddedconfirmation";
     }
 
     @GetMapping("/potluckguestlist")
@@ -56,6 +54,17 @@ public class MainController {
 
         return "potluckguestlist";
     }
+
+
+    @PostMapping("/guestaddedconfirmation")
+    public String guestAddedConfirmation (@ModelAttribute("potluckGuest") PotluckGuest potluckGuest, Model model) {
+        model.addAttribute("potluckGuest", potluckGuest);
+
+        return "guestaddedconfirmation";
+    }
+
+
+
 
 
     @PostMapping("/searchList")

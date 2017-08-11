@@ -3,12 +3,12 @@ package com.potluck.group1.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
+//@Entity
 public class SearchBox {
 
     // @Id is necessary even if SearchBox is not being used in the db
-    @Id
-    private long id;
+//    @Id
+//    private long id;
     private String searchEntry;
 
 
